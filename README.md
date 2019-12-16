@@ -1,6 +1,5 @@
 # krio-src
-Unpacked / partially reverse engineered code for krunker.io. May be buggy or broken, but I tested it and it seems to work.
-This could be useful if you want to patch the game to add some kind of hack instead of injecting code.
+Unpacked / partially reverse engineered code for krunker.io. May be buggy or broken, but I tested it and it seems to work. This could be useful if you want to patch the game to add some kind of hack instead of injecting code.
 
 ## Building
     npm install
@@ -9,6 +8,7 @@ The compiled game is in `public`. You can run a server there. Note however that 
 
 ## Notes
 `src/loader` - the bindings for a wasm module that loads the game. This has code that generates tokens which are used when matchmaking / connecting to servers.
+
 `src/game` - the main game code. A lot of it is not reversed fully (e.g. the file names are numbers, the contents have many chained assignments with comma operators, etc.)
 
 Some information on the game:
