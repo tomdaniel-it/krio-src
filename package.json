@@ -1,0 +1,16 @@
+{
+    "name": "krio-src",
+    "scripts": {
+        "build:assets": "cp -r assets/* public/",
+        "build:loader": "browserify --debug src/loader/main.js > public/loader.js",
+        "build:gamepkg": "browserify --debug src/game/main.js > game.js && ./util/xor.py game.js public/pkg/krunker.mWa2r.vries f7 && rm game.js",
+        "build": "npm run build:assets && npm run build:loader && npm run build:gamepkg"
+    },
+    "dependencies": {
+        "bad-words": "^3.0.3",
+        "msgpack-lite": "^0.1.26",
+        "process": "^0.11.10",
+        "three": "^0.111.0",
+        "url-parse": "^1.4.7"
+    }
+}
