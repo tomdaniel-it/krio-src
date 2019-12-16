@@ -21,4 +21,4 @@ All of the `__LOADER__` values are replaced by the loader with random text strin
 
 The game itself is compiled and xored with 0xf7 (value might change?) and placed into `pkg/krnker.[build].vries`.
 
-The protocol of the game is a messagepack object plus a null byte and a validation byte (`ahNum`) which is calculated with `((last_value + 0x409) & 0xff)`. The format of the messagepack object is `["name", ["arg1", "arg2"]]`. This is all sent over a websocket.
+The protocol of the game is a messagepack object plus a validation byte (`ahNum`) which is calculated with `((last_value + 0x409) & 0xff)`. This is split across 2 bytes as `[(val >> 4) & 0xf, val & 0xf]` The format of the messagepack object is `["name", ["arg1", "arg2"]]`. This is all sent over a websocket.
