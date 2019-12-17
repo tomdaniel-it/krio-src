@@ -51,7 +51,7 @@ module['exports'] = function(bOO, bOS, bOT, bOY, bOZ) {
     }, this['renderer'] = new bOO['WebGLRenderer']({
         'precision': 'mediump',
         'powerPreference': 'high-performance',
-        'antialias': !0x1
+        'antialias': false
     }), this['renderer']['shadowMap']['enabled'] = !0x0, this['renderer']['shadowMap']['autoUpdate'] = !0x1, this['renderer']['shadowMap']['type'] = bOO['BasicShadowMap'], this['renderer']['setPixelRatio'](window['devicePixelRatio']), this['renderer']['setSize'](window['innerWidth'], window['innerHeight']), this['renderer']['autoClear'] = !0x1, document['body']['appendChild'](this['renderer']['domElement']), this['shadows'] = !0x0, this['updateShadowMap'] = function() {
         this['shadows'] && (this['renderer']['shadowMap']['needsUpdate'] = !0x0);
     }, this['toggleShadowMap'] = function(bON) {

@@ -173,7 +173,7 @@ Object.defineProperty(console, '_commandLineAPI', {
 });
 var cAY = require("./color.js");
 var cAZ = require("three");
-cAZ.OBJLoader = require("./64.js")(cAZ);
+cAZ.OBJLoader = require("./objloader.js")(cAZ);
 cAZ.Shaders = require("./lambert-stripped.js")(cAZ);
 var cB0 = require("./util.js");
 var cB1 = require("./92.js");
@@ -2979,7 +2979,37 @@ function cNp(czW, czX, czY, czZ) {
 }
 
 function cNu(czW, czX, czY, czZ, cA0, cA1, cA2, cA3, cA8, cA9) {
-    if (cA1['isFromQueue'] && window['history']['replaceState']({}, 'Krunker', '/'), cBK = !0x1, cA3 ? cA3['data'] && cB9['customMap'](cA3['data'], cA3['id'], cA3['creator'], null, !0x0) : cB9['map']['setMaps'](), cB9['isCustom'] = !!cA0, cBo = cA0, cBn = cA0 && cA0 == cB8['socketId'], mapVote['innerHTML'] = '', mapVoteVal = 0x0, cBP['length'] = 0x0, cBQ = !0x1, cA0 && cA3 && null != cA3['id'] && (cBP = [cA3['id'], cA3['creator']], mapVote['innerHTML'] = '<div class=\'voteHint\'>Rate</div><i id=\'mapVoteD\' onclick=\'voteMap(' + cA3['id'] + ',-1)\' class=\'material-icons vote\'>thumb_down</i><i id=\'mapVoteU\' onclick=\'voteMap(' + cA3['id'] + ',1)\' class=\'material-icons vote\'>thumb_up</i>'), cB9['applyConfig'](cA1, cA3 && cA3['featured']), cB9['init'](czW, czX, cA9), cB9['setObjective'](czZ), loadingBg['style']['display'] = 'none', inviteButton['classList']['toggle']('buttonD', !!cB9['mode']['isRanked']), menuBtnHost['classList']['toggle']('buttonD', !!cB9['mode']['isRanked']), (cA8 = cA8 || {})['dest'])
+    // 0, 1, 5, 6, 8, 9
+    /*
+     * 0 init 0
+     * 1 init 1
+     * 2 
+     * 3 setObjective 0
+     * 4 isCustom
+     * 5 applyConfig 0
+     * 6 
+     * 7
+     * 8
+     * 9 init 2
+    */
+    cA1.isFromQueue && window.history.replaceState({}, 'Krunker', '/');
+    cBK = false;
+    cA3 ? cA3.data && cB9.customMap(cA3.data, cA3.id, cA3.creator, null, true) : cB9.map.setMaps();
+    cB9.isCustom = !!cA0;
+    cBo = cA0;
+    cBn = cA0 && cA0 == cB8.socketId;
+    mapVote.innerHTML = '';
+    mapVoteVal = 0;
+    cBP.length = 0;
+    cBQ = false;
+    cA0 && cA3 && null != cA3['id'] && (cBP = [cA3['id'], cA3['creator']], mapVote['innerHTML'] = '<div class=\'voteHint\'>Rate</div><i id=\'mapVoteD\' onclick=\'voteMap(' + cA3['id'] + ',-1)\' class=\'material-icons vote\'>thumb_down</i><i id=\'mapVoteU\' onclick=\'voteMap(' + cA3['id'] + ',1)\' class=\'material-icons vote\'>thumb_up</i>');
+    cB9['applyConfig'](cA1, cA3 && cA3['featured']);
+    cB9['init'](czW, czX, cA9);
+    cB9['setObjective'](czZ);
+    loadingBg['style']['display'] = 'none';
+    inviteButton['classList']['toggle']('buttonD', !!cB9['mode']['isRanked']);
+    menuBtnHost['classList']['toggle']('buttonD', !!cB9['mode']['isRanked']);
+    if ((cA8 = cA8 || {})['dest'])
         for (var cAd = 0x0; cAd < cA8['dest']['length']; ++cAd) cB9['destroyObj'](cA8['dest'][cAd]);
     if (cA8['flg'])
         for (cAd = 0x0; cAd < cA8['flg']['length']; ++cAd) cB9['updateFlag'](...cA8['flg'][cAd]);

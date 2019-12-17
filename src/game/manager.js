@@ -4,7 +4,7 @@ var c2V, c2W, c2X = 0x0,
     };
 module['exports']['manager'] = function(c2S, c2T, c2X) {
     var c33, c34;
-    c2S && (c2V = require("./38.js")['prefabs'], c2W = require("three")), this['aoOpac'] = 0x0, this['objects'] = [], this['objectives'] = [], this['flags'] = [], this['pickups'] = [], this['gates'] = [], this['banks'] = [], this['interfaces'] = [], this['teleporters'] = [], this['collision'] = function(c2S, c2T, c2U) {
+    c2S && (c2V = require("./prefabs.js")['prefabs'], c2W = require("three")), this['aoOpac'] = 0x0, this['objects'] = [], this['objectives'] = [], this['flags'] = [], this['pickups'] = [], this['gates'] = [], this['banks'] = [], this['interfaces'] = [], this['teleporters'] = [], this['collision'] = function(c2S, c2T, c2U) {
         return c2S['x'] - c2S['width'] - c2U <= c2T['x'] + c2T['width'] && c2S['x'] + c2S['width'] + c2U >= c2T['x'] - c2T['width'] && c2S['z'] - c2S['length'] - c2U <= c2T['z'] + c2T['length'] && c2S['z'] + c2S['length'] + c2U >= c2T['z'] - c2T['length'] && c2S['y'] - c2S['height'] - c2U <= c2T['y'] + c2T['height'] && c2S['y'] + c2S['height'] + c2U >= c2T['y'] - c2T['height'];
     }, this['checkPos'] = function(c2S, c2U, c2V, c2W, c2X) {
         for (var c2Y = 0x0; c2Y < this['objects']['length']; ++c2Y)

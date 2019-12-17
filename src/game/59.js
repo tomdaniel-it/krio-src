@@ -1,6 +1,7 @@
-const bTB = require("three"),
-    bTC = (require("./util.js"), require("./66.js")),
-    bTD = require("./67.js")['easing'];
+const bTB = require("three");
+require("./util.js");
+const bTC = require("simplex-noise");
+const bTD = require("./67.js").easing;
 let bTE, bTF = 'undefined' != typeof location;
 bTF && (bTE = new bTB['StrippedLambertMaterial']({
     'color': 0x8c8c8c,
@@ -29,7 +30,17 @@ class bTT extends bTB['Object3D'] {
         return new bTT(bTy['terrainSeed'], bTy['terrainWidth'], bTy['terrainHeight'], bTy['sizeMlt'], bTy['terrainMntMlt'], bTy['terrainDrtCol'], bTy['terrainGrsCol'], bTy['terrainMntCol']);
     }
     constructor(bTy, bTz, bTA, bTD, bTG, bTI, bTT, bU2) {
-        super(), bTD = bTM, this['sizeMlt'] = bTD, this['sizeX'] = bTz, this['sizeY'] = bTA, this['edgeSize'] = 0x1f4, this['mntMlt'] = bTG, bTJ['DIRT'] = bTK(bTI), bTJ['MOUNTAIN'] = bTK(bU2), bTJ['GRASS'] = bTK(bTT), this['simplex'] = new bTC(bTy);
+        super()
+        bTD = bTM;
+        this['sizeMlt'] = bTD;
+        this['sizeX'] = bTz;
+        this['sizeY'] = bTA;
+        this['edgeSize'] = 500;
+        this['mntMlt'] = bTG;
+        bTJ['DIRT'] = bTK(bTI);
+        bTJ['MOUNTAIN'] = bTK(bU2);
+        bTJ['GRASS'] = bTK(bTT);
+        this['simplex'] = new bTC(bTy);
         let bU3 = Math['floor'](bTz / bTL),
             bU4 = Math['floor'](bTA / bTL);
         this['xSegmentCount'] = bU3, this['ySegmentCount'] = bU4;

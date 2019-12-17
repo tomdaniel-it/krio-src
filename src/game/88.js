@@ -438,7 +438,9 @@
         };
         var cwY = [];
         this['init'] = function(cta, ctg, cti) {
-            this['players']['clear'](), this['teams'] = {}, cwY['length'] = 0x0;
+            this['players']['clear']();
+            this['teams'] = {};
+            cwY['length'] = 0x0;
             var ctk = null;
             if (this['endData']['mts']['length']) {
                 for (var ctz = 0x0; ctz < this['endData']['mts']['length']; ++ctz)
@@ -451,8 +453,33 @@
             if (null != ctk) {
                 var ctC = ctk['split'](',');
                 this['modeIndex'] = parseInt(ctC[0x0]), this['mapIndex'] = parseInt(ctC[0x1]);
-            } else this['modeIndex'] = null == ctg ? this['config']['modes'] ? this['config']['modes'][ctf['randInt'](0x0, this['config']['modes']['length'] - 0x1)] : ctf['randInt'](0x0, 0x3) : ctg, this['mapIndex'] = null == cta ? this['config']['maps'][ctf['randInt'](0x0, this['config']['maps']['length'] - 0x1)] : cta;
-            if (this['destObjs']['length'] = 0x0, this['mode'] = cte['modes'][this['modeIndex']], this['map']['generate'](this['mapIndex'], this['mode'], cti), this['resetFlags'](), this['resetPickups'](), this['resetGates'](), this['resetBanks'](), this['resetZone'](), this['minPlayers'] = this['config']['minPlayers'] || this['mode']['minPlayers'], !this['minPlayers'] && (this['config']['lives'] || this['mode']['lives'] || 0x0) && (this['minPlayers'] = 0x2), this['voteToKick'] = null, this['voteInitiators']['length'] = 0x0, this['needAllTimer'] = 0xc350, this['zoneTimer'] = 0x0, this['nukeTimer'] = 0x0, this['objectiveTimer'] = 0x0, this['activeObjective'] = null, this['gameTimer'] = null == this['mode']['gameTime'] ? 0xea60 * this['config']['gameTime'] : this['mode']['gameTime'], this['lastTimer'] = 0x0, this['lastTimerW'] = 0x0, this['lastTimerNA'] = 0x0, this['waitTimers'] = null, this['mode']['waitTimers']) {
+            } else {
+                this['modeIndex'] = null == ctg ? this['config']['modes'] ? this['config']['modes'][ctf['randInt'](0x0, this['config']['modes']['length'] - 0x1)] : ctf['randInt'](0x0, 0x3) : ctg;
+                this['mapIndex'] = null == cta ? this['config']['maps'][ctf['randInt'](0x0, this['config']['maps']['length'] - 0x1)] : cta;
+            }
+            this['destObjs']['length'] = 0x0;
+            this['mode'] = cte['modes'][this['modeIndex']];
+            this['map']['generate'](this['mapIndex'], this['mode'], cti);
+            this['resetFlags']();
+            this['resetPickups']();
+            this['resetGates']();
+            this['resetBanks']();
+            this['resetZone']();
+            this['minPlayers'] = this['config']['minPlayers'] || this['mode']['minPlayers'];
+            !this['minPlayers'] && (this['config']['lives'] || this['mode']['lives'] || 0x0) && (this['minPlayers'] = 0x2);
+            this['voteToKick'] = null;
+            this['voteInitiators']['length'] = 0x0;
+            this['needAllTimer'] = 0xc350;
+            this['zoneTimer'] = 0x0;
+            this['nukeTimer'] = 0x0;
+            this['objectiveTimer'] = 0x0;
+            this['activeObjective'] = null;
+            this['gameTimer'] = null == this['mode']['gameTime'] ? 0xea60 * this['config']['gameTime'] : this['mode']['gameTime'];
+            this['lastTimer'] = 0x0;
+            this['lastTimerW'] = 0x0;
+            this['lastTimerNA'] = 0x0;
+            this['waitTimers'] = null;
+            if (this['mode']['waitTimers']) {
                 this['waitTimers'] = [];
                 for (ctz = 0x0; ctz < this['mode']['waitTimers']['length']; ++ctz) this['waitTimers']['push']({
                     'time': this['mode']['waitTimers'][ctz]['time'],

@@ -165,16 +165,19 @@ class cTC {
             });
         });
     }
-    ['matchmakerSeek'](cT5, exports = null, cT7, cTq = !0x0, cTr, cTC = null) {
-        return cT8(this, void 0x0, void 0x0, function*() {
-            this['log']('Seeking matchmaker with region ' + cT5 + '...');
+    matchmakerSeek(cT5, exports = null, cT7, cTq = !0x0, cTr, cTC = null) {
+        return cT8(this, undefined, undefined, function*() {
+            this.log('Seeking matchmaker with region ' + cT5 + '...');
             let cT8 = {
-                'hostname': this['hostname'],
+                'hostname': this.hostname,
                 'region': cT5,
                 'autoChangeGame': cTq,
                 'validationToken': cTr
             };
-            return exports && (cT8['game'] = exports), cT7 && (cT8['dataQuery'] = JSON['stringify'](cT7)), cTC && (cT8['captchaToken'] = cTC), yield this['matchmakerRequest']('/seek-game', cT8);
+            exports && (cT8.game = exports);
+            cT7 && (cT8.dataQuery = JSON.stringify(cT7));
+            cTC && (cT8.captchaToken = cTC);
+            return yield this.matchmakerRequest('/seek-game', cT8);
         });
     }
     ['fetchAllDebugInfo'](cT5) {
